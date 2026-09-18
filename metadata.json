@@ -1,0 +1,6 @@
+{
+  "name": "Notes",
+  "description": "A modern, high-end notes and document interface with inline block creation, rich text editing, and drag-and-drop organization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

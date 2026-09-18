@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1c1917;
+    background-color: #faf9f6;
+  }
+}
+
+/* Custom styles for Tiptap Note Content */
+.note-editor .tiptap {
+  outline: none;
+  min-height: 48px;
+}
+
+.note-editor .tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #a8a29e;
+  pointer-events: none;
+  height: 0;
+  font-style: normal;
+}
+
+/* Typography styles for note content (both editor and static preview) */
+.note-content-prose {
+  color: #292524;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.note-content-prose p {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.note-content-prose h1 {
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: #1c1917;
+  letter-spacing: -0.015em;
+  margin-top: 0.9rem;
+  margin-bottom: 0.35rem;
+}
+
+.note-content-prose h2 {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #1c1917;
+  letter-spacing: -0.01em;
+  margin-top: 0.75rem;
+  margin-bottom: 0.3rem;
+}
+
+.note-content-prose h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #292524;
+  margin-top: 0.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.note-content-prose ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin: 0.4rem 0;
+}
+
+.note-content-prose ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin: 0.4rem 0;
+}
+
+.note-content-prose li {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.note-content-prose blockquote {
+  border-left: 3px solid #d6d3d1;
+  padding-left: 0.875rem;
+  margin: 0.75rem 0;
+  color: #57534e;
+  font-style: italic;
+}
+
+.note-content-prose pre {
+  background: #f5f5f4;
+  border: 1px solid #e7e5e4;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  overflow-x: auto;
+  margin: 0.65rem 0;
+  color: #292524;
+}
+
+.note-content-prose code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.84em;
+  background-color: #f5f5f4;
+  border: 1px solid #e7e5e4;
+  padding: 0.12em 0.35em;
+  border-radius: 4px;
+  color: #9a3412;
+}
+
+.note-content-prose pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+.note-content-prose hr {
+  border: none;
+  border-top: 1px solid #e7e5e4;
+  margin: 1rem 0;
+}
+
+.note-content-prose a {
+  color: #0284c7;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.note-content-prose mark {
+  background-color: #fef08a;
+  padding: 0.1em 0.25em;
+  border-radius: 2px;
+}
+
+/* Task List (Checklist) Styling */
+.note-content-prose ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0;
+}
+
+.note-content-prose ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0.35rem 0;
+}
+
+.note-content-prose ul[data-type="taskList"] li > label {
+  user-select: none;
+  cursor: pointer;
+  margin-top: 0.2rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.note-content-prose ul[data-type="taskList"] li > label input[type="checkbox"] {
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 1.5px solid #a8a29e;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  background-color: #fff;
+  transition: all 0.15s ease;
+}
+
+.note-content-prose ul[data-type="taskList"] li > label input[type="checkbox"]:hover {
+  border-color: #78716c;
+}
+
+.note-content-prose ul[data-type="taskList"] li > label input[type="checkbox"]:checked {
+  background-color: #1c1917;
+  border-color: #1c1917;
+}
+
+.note-content-prose ul[data-type="taskList"] li > label input[type="checkbox"]:checked::before {
+  content: "";
+  width: 7px;
+  height: 4px;
+  border-left: 1.75px solid #fff;
+  border-bottom: 1.75px solid #fff;
+  transform: rotate(-45deg) translate(0.5px, -0.5px);
+}
+
+.note-content-prose ul[data-type="taskList"] li[data-checked="true"] > div {
+  text-decoration: line-through;
+  color: #78716c;
+}
+
+.note-content-prose ul[data-type="taskList"] li > div {
+  flex: 1 1 auto;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
